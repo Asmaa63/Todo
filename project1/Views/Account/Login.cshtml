@@ -1,0 +1,27 @@
+﻿@using project1.ViewModel
+@model Login
+
+
+<div class="w-75 mx-auto">
+	<h1>Login</h1>
+	<form asp-action="SubmitLogin" asp-controller="Account">
+		<div>
+			<label asp-for="email"></label>
+			<input class="form-control" asp-for="email" />
+			<span asp-validation-for="email" class="text-danger"></span>
+		</div>
+		<div>
+			<label asp-for="password"></label>
+			<input class="form-control" asp-for="password" type="password"/>
+			<span asp-validation-for="password" class="text-danger"></span>
+		</div>
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<input type="submit" class="btn btn-primary mt-4" />
+	</form>
+
+</div>
+@section Scripts{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

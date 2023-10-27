@@ -1,0 +1,39 @@
+﻿@model Todo
+
+
+@{
+	var action = (Model == null) ? "SaveNewTodo" : "SaveEditTodo";
+	var word = (Model == null) ? "Create" : "Update";
+}
+<div class="w-100 mx-auto">
+	<h1 class="mb-2"> @word New Category </h1>
+	<form method="post" asp-controller="Todo" asp-action="@action" asp-route-id="@Model?.id">
+		<div>
+			<label asp-for="name"></label>
+			<input asp-for="name" class="form-control">
+			<span asp-validation-for="name" class="text-danger"></span>
+		</div>
+		<div>
+			<label asp-for="description"></label>
+			<input asp-for="description" class="form-control">
+			<span asp-validation-for="description" class="text-danger"></span>
+		</div
+		<div>
+			<label asp-for="categoryid"></label>
+			<select asp-for="categoryid" class="form-control mt-20">
+				@foreach(var cate in ViewData["cate"] as List<Category>)
+				{
+					<option value="@cate.id">@cate.name</option>
+				}
+			</select>
+			<span asp-validation-for="categoryid" class="text-danger"></span>
+		</div>
+		<input type="submit" class="btn btn-primary mt-4" />
+	</form>
+</div>
+
+@section Scripts{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

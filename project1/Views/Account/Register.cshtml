@@ -1,0 +1,39 @@
+﻿@model User
+
+<h1>Registration Form </h1>
+<div class="w-75 mx-auto">
+	<form asp-action="SubmitRegister" asp-controller="Account">
+		<div>
+			<label asp-for="name"></label>
+			<input class="form-control" asp-for="name" />
+			<span asp-validation-for="name" class="text-danger"></span>
+		</div>
+		<div>
+			<label asp-for="email"></label>
+			<input class="form-control" asp-for="email" />
+			<span asp-validation-for="email" class="text-danger"></span>
+		</div>
+		<div>
+			<label asp-for="password"></label>
+			<input class="form-control" asp-for="password" type="password"/>
+			<span asp-validation-for="password" class="text-danger"></span>
+		</div>
+		<div>
+			<label asp-for="Role"></label>
+			<select class="form-control" asp-for="Role">
+				<option value="Admin">Admin</option>
+				<option value="User">User</option>
+			</select>
+			<span asp-validation-for="Role" class="text-danger"></span>
+		</div>
+		<input type="submit" class="btn btn-primary mt-3" />
+	</form>
+
+</div>
+@section Scripts{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<partial name="_ValidationScriptsPartial"></partial>
